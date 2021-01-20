@@ -6,17 +6,19 @@
 1. Set the node2vec executable path in `config.ini > NODE_TO_VEC`,
 1. In windows, set `sh.exe` path in `config.ini > SHELL`
 
-
-#### Run from Command line
 Option 1: 
-    Execute ./test_script $1 $2 $3 $4 
+#### Use Script
+
+
+Execute ./test_script $1 $2 $3 $4 
     1. $1: dataset [wiki|slashdot|epinions]
     2. $2: method of embedding [3type|attention] 
     3. $3: node degree threshold for sampling from the input graph (shrinks the graph by removing nodes with degree < k). Set to 0 if you want to use the entire graph. 
     4. $4: target task (the model can be used for link prediction and sign prediction) [link|sign]
 
-
 Option 2:
+#### Run from Command line
+
 
 1. To embed a graph and build a sign prediction model, execute:
     ```
@@ -35,6 +37,7 @@ Option 2:
     ```
     1. Model and embeddings will be read from `temp/slash-*`,
     1. `--method [3type | attention | sine]` sets the method of embedding
+
 
 Option 3:
 
