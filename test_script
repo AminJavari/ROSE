@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo Tune the model!
+
+declare -r mindeg=$3
+
+for di in 10
+do
+	for wi in 2  
+	do
+		for wa in 22 
+		do
+			echo building "$1-wa$wa-wi$wi-di$di" 
+			nbwalks=$((750 / wa))
+			echo $nbwalks
+			python bootstrap.py build --method $2 --input "./dataset/soc-sign-$1.txt" --sample degree $mindeg  --embedtype "py" --dimension $di --windowsize $wi --walklen $wa --nbofwalks $nbwalks  --classificationfunc MLP --optimizeclassifier True --task $4  --temp-dir "./tmp/" --temp-id "$1_$mindeg-wa$wa-wi$wi-di$di" --logfile "logFinalMLP.txt"  --force model
+
+
+		done
+	done
+done
+
